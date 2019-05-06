@@ -29,7 +29,7 @@ app.get('', (req,res) => {
 
 app.get('/about', (req,res) => {
     res.render('about', {
-        title: 'About Me',
+        title: 'About',
         name: 'Jugal Kamdar'
     })
 })
@@ -38,7 +38,7 @@ app.get('/about', (req,res) => {
 app.get('/help', (req,res) => {
     res.render('help', {
         title: 'How can i help you?',
-        question: 'Can you tell me how to run a js script.',
+        question: 'Get weather forecast by just providing the specific location in search bar. Try now!',
         name: 'Jugal Kamdar'
     })
 })
@@ -54,7 +54,6 @@ app.get('/weather', (req,res) => {
             return res.send({
                 error: geocodeError
             })
-            //return console.log(geocodeError)
         }
         
         forecast(latitude, longitude, (forecastError, forecastData) => {
@@ -63,8 +62,6 @@ app.get('/weather', (req,res) => {
                 //return console.log(forecastError)
             }
     
-            //console.log(location)
-            //console.log(forecastData)
             res.send({
                 Location: location,
                 ForecastData: forecastData,
@@ -72,19 +69,6 @@ app.get('/weather', (req,res) => {
             })
           })
     })
-
-
-
-
-
-
-    // console.log(req.query.search);
-    // res.send({today: {
-    //     Rain: 30,
-    //     temperature: 45.12,
-    //     humidity: 30,
-    //     Address: req.query.address
-    // }})
 })
 
 app.get('/help/*', (req,res) => {

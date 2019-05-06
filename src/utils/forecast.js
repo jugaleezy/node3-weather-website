@@ -15,7 +15,10 @@ const forecast = (lat, long, callack) => {
             const rain = body.currently.precipProbability
             const temperature = body.currently.temperature
             const daily = body.daily.data[0].summary
-            const show = daily+" It's currently "+temperature+" degree out and there is "+rain+"% chance of rain."
+            const humidity = body.currently.humidity
+            const windSpeed = body.currently.windSpeed
+
+            const show = daily+" It's currently "+temperature+" degree out and there is "+rain+"% chance of rain.\nHumidity level is " + humidity + " and the Wind speed is " +windSpeed +"."
             callack(undefined, show)
         }
     })
